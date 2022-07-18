@@ -1,0 +1,79 @@
+<!--ヘッダー-->
+<%= render 'admin/header' %>
+
+<!--社員一覧画面-->
+<div class="container">
+  <div class="form-group row mt-5">
+    <div class="col-sm-6">
+      <big class="bg-light"><strong>社員一覧</strong></big>
+    </div>
+    <div class="col-sm-5">
+      <%= search_form_for @q,url:admin_users_path do |f| %>
+        <%= f.label :name, "キーワード検索" %>
+        <%= f.search_field :name_or_name_kana_or_email_or_name_pass_cont %>
+        <%= f.submit "検索" %>
+      <% end %>
+    </div>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="container">
+  <div class="row">
+    <div class='col-md-8 offset-md-1'>
+
+ <table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th>社員ID</th>
+      <th>氏名</th>
+      <th>氏名カナ</th>
+      <th>email</th>
+      <th>パスワード</th>
+      <th>ステータス</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+  <tbody>
+
+
+    <% @users.each do |user| %>
+      <tr>
+        <td>
+          <%= user.id %>
+        </td>
+        <td>
+          <%= link_to admin_user_path(user.id) do %>
+          <%= user.name %>
+          <% end %>
+        </td>
+        <td>
+          <%= user.name_kana %>
+        </td>
+        <td>
+          <%= user.email %>
+        </td>
+        <td>
+          <%= user.name_pass %>
+        </td>
+        <td>
+          <% if user.is_active == true %>
+          <strong class="text-success"><%= "在籍" %></strong>
+          <% else %>
+          <% user.is_active == false %>
+          <strong class="text-secondary"><%= "退社" %></strong>
+          <% end %>
+        </td>
+      </tr>
+
+    <% end %>
+  </tbody>
+ </table>
+</div>
+</div>
+</div>
+
+<%#= paginate @users %>

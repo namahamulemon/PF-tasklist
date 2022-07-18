@@ -1,0 +1,39 @@
+
+<!--ヘッダー-->
+<%= render 'admin/header' %>
+
+
+<h1>社員登録</h1>
+
+<%= form_with model: @user, url: admin_users_path, local:true do |f| %>
+
+  <div class="name col-sm-2">
+    <%= f.label :氏名 %>
+    <%= f.text_field :name, autofocus: true, placeholder:"氏名を入力してください", class: "form-control form-control-sm" %>
+  </div>
+
+  <div class="name_kana col-sm-2">
+    <%= f.label :氏名カナ %>
+    <%= f.text_field :name_kana, autofocus: true, placeholder:"シメイを入力してください", class: "form-control form-control-sm" %>
+  </div>
+
+  <div class="field col-sm-2">
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"sample@example.com", class: "form-control form-control-sm" %>
+  </div>
+
+  <div class="name_pass col-sm-2">
+    <%= f.label :password, "パスワード" %>
+    <%= f.password_field :password, autocomplete: "new-password", placeholder:"passwordを入力してください", class: "form-control form-control-sm" %>
+  </div>
+
+  <div class="name_pass col-sm-2">
+    <%= f.label :name_pass, "確認用パスワード" %>
+    <%= f.text_field :name_pass, autofocus: true, placeholder:"確認用のpasswordを入力してください", class: "form-control form-control-sm" %>
+  </div>
+
+  <div class="submit col-sm-2 mt-3">
+    <%= f.submit '登録', class:"btn btn-success" %>
+  </div>
+
+<% end %>

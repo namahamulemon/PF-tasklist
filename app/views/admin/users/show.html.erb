@@ -1,0 +1,83 @@
+
+<!--ヘッダー-->
+<%= render 'admin/header' %>
+
+
+<!--社員情報詳細ページ-->
+<div class="container">
+  <div class="row">
+    <div class="mt-4 mb-4 col-4">
+      <h5 class="bg-light"><strong><%= @user.name %>詳細</strong></h5>
+    </div>
+  </div>
+</div>
+
+
+    <div class='col-md-8 offset-md-1'>
+
+     <div class="row mb-2">
+       <div class="col-sm-2">
+        <label>社員ID</label>
+       </div>
+         <div class="col-sm-6">
+          <%= @user.id %>
+         </div>
+     </div>
+
+     <div class="row mb-2">
+       <div class="col-sm-2">
+        <label>氏名</label>
+       </div>
+         <div class="col-sm-6">
+          <%= @user.name %>
+         </div>
+     </div>
+
+     <div class="row mb-2">
+       <div class="col-sm-2">
+        <label>氏名カナ</label>
+       </div>
+         <div class="col-sm-6">
+           <%= @user.name_kana %>
+         </div>
+       </div>
+
+     <div class="row mb-2">
+       <div class="col-sm-2">
+        <label>email</label>
+       </div>
+         <div class="col-sm-6">
+           <%= @user.email %>
+         </div>
+     </div>
+
+     <div class="row mb-2">
+       <div class="col-sm-2">
+        <label>パスワード</label>
+       </div>
+         <div class="col-sm-6">
+           <%= @user.name_pass %>
+         </div>
+       </div>
+
+     <div class="row mb-2">
+       <div class="col-sm-2">
+        <label>会員ステータス</label>
+       </div>
+         <div class="col-sm-6">
+          <% if @user.is_active == true %>
+          <strong class="text-success"><%= "在籍" %></strong>
+          <% else %>
+          <% @user.is_active == false %>
+          <strong class="text-secondary"><%= "退社" %></strong>
+          <% end %>
+         </div>
+     </div>
+
+     <div class="row mb-2">
+       <div class="col-sm-2">
+      　 <%= link_to '編集する', edit_admin_user_path(@user.id), class: "btn btn-success btn-sm btn-block" %>
+       </div>
+     </div>
+
+     </div>
