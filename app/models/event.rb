@@ -1,3 +1,3 @@
-class Event < ApplicationRecordApplicationRecord
+class Event < ApplicationRecord
   belongs_to :user
 end
